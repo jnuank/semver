@@ -36,3 +36,9 @@ spec = do
         it "下位互換性を壊す場合は、メジャーを更新して、マイナーとパッチを0にする" $ do 
             let actual = makeVersion 1 2 1 
             (actual >>= bumpMajor) `shouldBe` (makeVersion 2 0 0)
+
+    describe "お題5:大小比較" $ do 
+        it "1.3.9 は 1.4.2 より小さい" $ do 
+            (makeVersion 1 3 9) < (makeVersion 1 4 2) `shouldBe` True
+        it "10.3.5 は 2.23.1 より大きい" $ do 
+            (makeVersion 10 3 5) > (makeVersion 2 23 1) `shouldBe` True

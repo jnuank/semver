@@ -5,7 +5,7 @@ module SemVer (
     bumpMajor
     ) where
 
-data Version = Version { major :: Int,  minor :: Int, patch :: Int } deriving Eq
+data Version = Version { major :: Int,  minor :: Int, patch :: Int } deriving (Eq, Ord)
 
 instance Show Version where
     show (Version major minor patch) = 
