@@ -12,9 +12,9 @@ instance Show Version where
         (show major) ++ "." ++ (show minor) ++ "." ++ (show patch)
 
 makeVersion :: Int -> Int -> Int -> Maybe (Version)
-makeVersion ma mi pa 
-    | ma < 0 || mi < 0 || pa < 0 = Nothing
-    | otherwise                  = Just (Version ma mi pa)
+makeVersion major minor patch 
+    | major < 0 || minor < 0 || patch < 0   = Nothing
+    | otherwise                             = Just (Version major minor patch)
 
 bumpPatch :: Version -> Maybe Version
 bumpPatch (Version major minor patch) = Just (Version major minor (patch+1) )
