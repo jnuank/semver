@@ -1,43 +1,69 @@
-name:                semver
-version:             0.1.0.0
--- synopsis:
--- description:
-homepage:            https://github.com/jnuank/semver#readme
-license:             BSD3
-license-file:        LICENSE
-author:              Jun Nakajima
-maintainer:          ikuta1919@gmail.com
-copyright:           2019 Jun Nakajima
-category:            Development
-build-type:          Simple
-extra-source-files:  README.md
-cabal-version:       >=1.10
+cabal-version: 1.12
 
-library
-  hs-source-dirs:      src
-  exposed-modules:     SemVer
-  build-depends:       base >= 4.7 && < 5
-  default-language:    Haskell2010
+-- This file has been generated from package.yaml by hpack version 0.31.1.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: 476dd3785ddea6c39e0a33f9ece4ae12bc9758cd3fa42386ecf739a3bf5b2e56
 
-executable semver
-  hs-source-dirs:      app
-  main-is:             Main.hs
-  ghc-options:         -threaded -rtsopts -with-rtsopts=-N
-  build-depends:       base
-                     , semver
-  default-language:    Haskell2010
-
-test-suite semver-test
-  type:                exitcode-stdio-1.0
-  hs-source-dirs:      test
-  main-is:             Spec.hs
-  build-depends:       base
-                     , semver
-                     , hspec
-                     , QuickCheck
-  ghc-options:         -threaded -rtsopts -with-rtsopts=-N
-  default-language:    Haskell2010
+name:           semver
+version:        0.1.0.0
+description:    Please see the README on GitHub at <https://github.com/jnuank/semver#readme>
+homepage:       https://github.com/jnuank/semver#readme
+bug-reports:    https://github.com/jnuank/semver/issues
+author:         Jun Nakajima
+maintainer:     ikuta1919@gmail.com
+copyright:      2019 Jun Nakajima
+license:        BSD3
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+    ChangeLog.md
 
 source-repository head
-  type:     git
+  type: git
   location: https://github.com/jnuank/semver
+
+library
+  exposed-modules:
+      SemVer
+  other-modules:
+      Paths_semver
+  hs-source-dirs:
+      src
+  build-depends:
+      base >=4.7 && <5
+    , interpolate
+  default-language: Haskell2010
+
+executable semver-exe
+  main-is: Main.hs
+  other-modules:
+      Paths_semver
+  hs-source-dirs:
+      app
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , interpolate
+    , mtl
+    , random
+    , semver
+  default-language: Haskell2010
+
+test-suite semver-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      SemVerSpec
+      Paths_semver
+  hs-source-dirs:
+      test
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , hspec
+    , interpolate
+    , semver
+  default-language: Haskell2010

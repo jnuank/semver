@@ -15,9 +15,9 @@ import           Data.String.Interpolate
 data Version = Version { major :: Int,  minor :: Int, patch :: Int } deriving (Eq, Ord)
 
 instance Show Version where
-    -- intercalate "." ["1","2","3"]　→　"1.2.3"
     show (Version major minor patch) = [i|#{major}.#{minor}.#{patch}|]
 
+    
 makeVersion :: Int -> Int -> Int -> Maybe Version
 makeVersion major minor patch | major < 0 || minor < 0 || patch < 0 = Nothing
                               | otherwise = Just (Version major minor patch)
