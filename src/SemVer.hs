@@ -5,11 +5,15 @@ module SemVer (
     bumpMajor
     ) where
 
+import Data.List
+
 data Version = Version { major :: Int,  minor :: Int, patch :: Int } deriving (Eq, Ord)
 
 instance Show Version where
-    show (Version major minor patch) = 
-        (show major) ++ "." ++ (show minor) ++ "." ++ (show patch)
+    -- intercalate "." ["1","2","3"]　→　"1.2.3"
+    show (Version major minor patch) = intercalate "." $ show <$> [major , minor, patch]
+--                (show major) ++ "." ++ (show minor) ++ "." ++ (show patch)
+
 
 makeVersion :: Int -> Int -> Int -> Maybe (Version)
 makeVersion major minor patch 
